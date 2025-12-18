@@ -1,7 +1,2 @@
 # dotfiles
-This directory contains dotfiles for Will Carter's various environments.
-
-# Environments
-## Personal
-Features
-* 
+A collection of my personal configuration files for Linux/macOS, including shell, editor, and application settings.

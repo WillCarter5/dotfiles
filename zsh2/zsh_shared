@@ -1,0 +1,25 @@
+##### ENVIRONMENT #####
+export EDITOR=vim
+export VISUAL=vim
+export PAGER=less
+export PATH="$HOME/bin:$PATH"
+
+##### HISTORY #####
+HISTSIZE=10000
+SAVEHIST=10000
+setopt inc_append_history
+setopt share_history
+setopt hist_ignore_dups
+setopt hist_reduce_blanks
+
+###### COMPLETION CORE #####
+autoload -Uz compinit
+compinit -d ~/.zcompdump
+
+###### KEYBINDINGS #####
+bindkey -e
+bindkey '^R' history-incremental-search-backward
+
+##### ALIASES #####
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases
+

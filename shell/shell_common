@@ -1,0 +1,21 @@
+# Editor Preferences
+export EDITOR=vim
+export VISUAL=vim
+
+# Language
+export LANG=en_US.UTF-8
+
+# Umask
+umask 0077
+
+# Color support detection
+case "$TERM" in
+    xterm-color|*-256color)
+        export TERM_COLOR=yes
+        ;;
+esac
+
+# iTerm2 shell integration (optional)
+if [ -f "$HOME/.iterm2_shell_integration.$(basename "$SHELL")" ]; then
+    source "$HOME/.iterm2_shell_integration.$(basename "$SHELL")"
+fi

@@ -1,0 +1,9 @@
+# Navigation
+alias ..="cd .."
+alias ...="cd ../.."
+
+# Common shortcuts
+alias c="clear"
+alias v="vim"
+alias quit="exit"
+alias pls='sudo $(fc -ln -1)'

@@ -1,0 +1,7 @@
+# Source base bashrc
+source "$HOME/dotfiles/bash/bashrc"
+
+# Simple prompt for remote
+PS1='${debian_chroot:+($debian_chroot)}\u@\h:\W\$ '
+
+# Work-specific additions here

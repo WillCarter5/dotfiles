@@ -1,0 +1,4 @@
+# Source base bashrc
+source "$HOME/dotfiles/bash/bashrc"
+
+# Local-specific additions here

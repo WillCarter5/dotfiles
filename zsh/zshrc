@@ -1,0 +1,10 @@
+# Shared zsh settings
+source ~/dotfiles/zsh/zsh_shared
+
+if [ -d "$HOME/.oh-my-zsh" ]; then
+    source ~/dotfiles/zsh/zsh_omz
+else
+    source ~/dotfiles/zsh/zsh_std
+fi
+
+

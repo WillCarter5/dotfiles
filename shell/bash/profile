@@ -1,0 +1,5 @@
+# PATH setup (login shells)
+export PATH="$HOME/bin:$PATH"
+
+# environment loading
+[ -f ~/.bashrc ] && source ~/.bashrc

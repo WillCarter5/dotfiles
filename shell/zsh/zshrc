@@ -1,0 +1,91 @@
+# ─────────────────────────────────────────────
+# Powerlevel10k instant prompt (MUST stay top)
+# ─────────────────────────────────────────────
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# ─────────────────────────────────────────────
+# Load user config (feature flags)
+# ─────────────────────────────────────────────
+[[ -f ~/.config/dotfiles/zsh.conf ]] && source ~/.config/dotfiles/zsh.conf
+
+# ─────────────────────────────────────────────
+# Environment
+# ─────────────────────────────────────────────
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+export EDITOR="vim"
+export VISUAL="vim"
+export PAGER="less"
+
+# ─────────────────────────────────────────────
+# Oh My Zsh (toggleable)
+# ─────────────────────────────────────────────
+USE_OMZ=${USE_OMZ:-true}
+
+if [ "$USE_OMZ" = true ]; then
+  export ZSH="$HOME/.oh-my-zsh"
+
+  ZSH_THEME="powerlevel10k/powerlevel10k"
+  plugins=(
+    git
+  )
+
+  source $ZSH/oh-my-zsh.sh
+fi
+
+# ─────────────────────────────────────────────
+# Shared dotfiles (your core logic layer)
+# ─────────────────────────────────────────────
+
+# Loader function
+load() {
+  [ -f "$1" ] && source "$1"
+}
+
+source "$HOME/.dotfiles/shell/shared/env.sh"
+source "$HOME/.dotfiles/shell/shared/aliases.sh"
+source "$HOME/.dotfiles/shell/shared/functions.sh"
+
+# ─────────────────────────────────────────────
+# Zsh behavior
+# ─────────────────────────────────────────────
+setopt HIST_IGNORE_DUPS
+setopt SHARE_HISTORY
+setopt HIST_REDUCE_BLANKS
+setopt AUTO_CD
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+# ─────────────────────────────────────────────
+# Completion system
+# ─────────────────────────────────────────────
+autoload -Uz compinit
+compinit -d ~/.zcompdump
+
+# ─────────────────────────────────────────────
+# Keybindings
+# ─────────────────────────────────────────────
+bindkey -e
+bindkey '^R' history-incremental-search-backward
+
+# ─────────────────────────────────────────────
+# Prompt (Powerlevel10k)
+# ─────────────────────────────────────────────
+USE_P10K=${USE_P10K:-false}
+
+if [ "$USE_P10K" = true ]; then
+  [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+fi
+
+# ─────────────────────────────────────────────
+# Python / pyenv
+# ─────────────────────────────────────────────
+eval "$(pyenv init -)"
+
+# ─────────────────────────────────────────────
+# Local overrides
+# ─────────────────────────────────────────────
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

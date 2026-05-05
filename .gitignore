@@ -1,0 +1,6 @@
+# .gitignore
+.DS_Store
+ssh/id_rsa
+ssh/id_ed25519
+*.local
+.netrc

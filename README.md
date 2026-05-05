@@ -1,14 +1,10 @@
-# 🧰 Dotfiles
+# Dotfiles
 
 A minimal, layered dotfiles setup for Bash and Zsh with shared configuration, optional Oh My Zsh / Powerlevel10k support, and per-machine feature toggles.
 
 ---
 
-# 🧭 Design Philosophy
-
-This setup is built around a simple rule:
-
-> Shared logic stays shared. Shells stay thin. Features are optional.
+# Design Philosophy
 
 ### Core ideas:
 - One shared config layer for Bash + Zsh
@@ -18,7 +14,7 @@ This setup is built around a simple rule:
 
 ---
 
-# 📁 Structure
+# Structure
 
 ```
 dotfiles/
@@ -42,12 +38,12 @@ dotfiles/
 
 ---
 
-# ⚙️ Installation
+#  Installation
 
 ## 1. Clone repo
 
 ```sh
-git clone https://github.com/yourname/dotfiles ~/.dotfiles
+git clone https://github.com/WillCarter5/dotfiles ~/.dotfiles
 ```
 
 ---
@@ -71,7 +67,7 @@ touch ~/.config/dotfiles/zsh.conf
 
 ---
 
-# 🧠 How it works
+# How it works
 
 ## Startup flow
 
@@ -86,17 +82,15 @@ touch ~/.config/dotfiles/zsh.conf
 ### Zsh
 ```
 ~/.zshrc
-  → optional OMZ
-  → shared layer
-  → shell options
-  → completion + keybinds
-  → p10k (optional)
-  → local overrides
+  → shared/env.sh
+  → shared/aliases.sh
+  → shared/functions.sh
+  → optional OMZ and p10k
 ```
 
 ---
 
-# 🔀 Feature toggles (`dotset`)
+# Feature toggles (`dotset`)
 
 ## Enable Oh My Zsh
 ```sh
@@ -142,7 +136,7 @@ exec zsh
 
 ---
 
-# 🧩 Shared layer
+# Shared layer
 
 ### env.sh
 - PATH
@@ -154,13 +148,11 @@ exec zsh
 - ls helpers
 
 ### functions.sh
-- mkcd
-- extract
 - dotset
 
 ---
 
-# 🧪 Local overrides
+# Local overrides
 
 ```
 ~/.zshrc.local
@@ -172,19 +164,7 @@ Used for:
 
 ---
 
-# 🧠 Mental model
-
-```
-dotset → writes config
-        ↓
-zshrc → reads config
-        ↓
-features enabled/disabled
-```
-
----
-
-# 🚀 Example setups
+# Example setups
 
 ## Minimal
 ```sh
@@ -201,11 +181,3 @@ exec zsh
 ```
 
 ---
-
-# 📌 Goals
-
-- readable shell config
-- no duplication between bash/zsh
-- toggle features cleanly
-- reproducible setup across machines
-

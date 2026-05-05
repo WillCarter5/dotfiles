@@ -2,6 +2,13 @@
 
 DOTFILES="$HOME/.dotfiles"
 
+safe_lnsf() {
+    # Check that directory exists
+    mkdir -p `pwd "$1"`
+
+    ln -sf "$1" "$2"
+}
+
 # zsh config
 ln -sf "$DOTFILES/shell/zsh/zshrc"  "$HOME/.zshrc"
 ln -sf "$DOTFILES/shell/zsh/zshenv" "$HOME/.zshenv"
